@@ -1,4 +1,4 @@
-#  Catálogo de Productos - Laravel + JQuery
+#  Catálogo de Productos - Laravel
 
 Aplicación web desarrollada en **Laravel 12.x** con **PHP 8.3** y base de datos **MySQL/MariaDB**, que permite gestionar un catálogo de productos con:
 
