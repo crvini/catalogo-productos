@@ -28,7 +28,9 @@ RUN composer install --no-dev --optimize-autoloader
 RUN php artisan config:clear \
  && php artisan config:cache \
  && php artisan route:cache \
- && php artisan view:cache
+ && php artisan view:cache \
+ && docker-php-ext-install pdo pdo_mysql \
+ && php artisan migrate
 
 # Exponer el puerto 8000
 EXPOSE 8000
