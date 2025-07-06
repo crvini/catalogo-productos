@@ -30,7 +30,7 @@ RUN php artisan config:clear \
  && php artisan view:cache \
  && php artisan migrate --force || echo "Migraciones fallaron o ya aplicadas"
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
 
