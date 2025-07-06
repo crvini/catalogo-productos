@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
+Route::get('/', [ProductController::class, 'index']);
+
 Route::get('/productos', [ProductController::class, 'index']);
 Route::get('/productos/list', [ProductController::class, 'list']);
 Route::post('/productos/store', [ProductController::class, 'store']);
