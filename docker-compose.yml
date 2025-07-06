@@ -21,9 +21,9 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: railway
+      MYSQL_USER: root
+      MYSQL_PASSWORD: RbmJkxvqtBGHOzDuhVWQFJlxFcDBIlLU
     volumes:
       - db_data:/var/lib/mysql
 
