@@ -1,27 +1,27 @@
-#  Catálogo de Productos - Laravel
+# Catálogo de Productos - Laravel
 
 Aplicación web desarrollada en **Laravel 12.x** con **PHP 8.3** y base de datos **MySQL/MariaDB**, que permite gestionar un catálogo de productos con:
 
-* CRUD completo (crear, editar, eliminar)
-* Subida y vista de imágenes
-* Paginación dinámica vía **AJAX**
-* Ordenamiento por fecha de ingreso
-* Validaciones con **JavaScript nativo**
-* Interfaz responsiva con Bootstrap 5
-*  Dockerizado y listo para levantar con `docker-compose`
+- CRUD completo (crear, editar, eliminar)
+- Subida y vista de imágenes
+- Paginación dinámica vía **AJAX**
+- Ordenamiento por fecha de ingreso
+- Validaciones con **JavaScript/jQuery**
+- Interfaz responsiva con Bootstrap 5
+- Dockerizado y listo para levantar con `docker-compose`
 
 ---
 
-##  Requisitos
+## 🔧 Requisitos
 
-* Docker + Docker Compose
-* Git (opcional, si clonas desde GitHub)
+- Docker + Docker Compose
+- Git (opcional, si clonas desde GitHub)
 
 ---
 
-##  Iniciar el proyecto (todo en un solo paso)
+## 🚀 Iniciar el proyecto (todo en un solo paso)
 
-Clona el proyecto, construye los contenedores y levanta Laravel con migraciones:
+Clona el proyecto, construye los contenedores y levanta Laravel con migraciones y almacenamiento enlazado:
 
 ```bash
 git clone https://github.com/crvini/catalogo-productos.git
@@ -30,25 +30,27 @@ docker-compose up -d --build
 docker exec -it laravel_app bash -c "composer install && cp .env.example .env && php artisan key:generate && php artisan migrate && php artisan storage:link && exit"
 ```
 
-Luego en el navegador en:
- **[http://localhost:8000](http://localhost:8000)**
+Una vez iniciado, accede a la app en:  
+👉 **[http://localhost:8000/productos](http://localhost:8000/productos)**
 
 ---
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 ├── app/Http/Controllers/ProductController.php
+├── database/migrations/xxxx_create_products_table.php
 ├── public/storage/             
 ├── resources/views/productos.blade.php
 ├── storage/app/public/fotos/  
 ├── docker-compose.yml
+├── Dockerfile (opcional si deseas usar uno personalizado)
 └── README.md
 ```
 
 ---
 
-## Variables de entorno .env
+## ⚙️ Variables de entorno (.env)
 
 ```env
 APP_NAME=Laravel
@@ -71,19 +73,33 @@ FILESYSTEM_DISK=public
 
 ---
 
-## Funcionalidades implementadas
+## ✅ Funcionalidades implementadas
 
-* Modal para agregar y editar productos
-* Validaciones en el cliente:
+- Modal para agregar y editar productos sin recargar la página
+- Validaciones en el cliente:
 
-  * Código único alfanumérico (sin caracteres especiales)
-  * Nombre solo con letras
-  * Imágenes solo en formato `.jpeg`, `.jpg`, `.png`, `.gif`
-  * Tamaño máximo permitido: 1.5MB
-  * Fechas en formato `DD/MM/YYYY`
-  * La fecha de ingreso y vencimiento debe ser posterior al inicio del mes actual
-* Paginación dinámica con AJAX
-* Ordenamiento al hacer clic en el encabezado "Fecha de ingreso"
-* Visualización de las imágenes en la tabla
+  - Código: alfanumérico obligatorio
+  - Nombre: solo letras
+  - Cantidad y precio: obligatorios y numéricos
+  - Imagen:
+    - Tipos válidos: `.jpg`, `.jpeg`, `.png`, `.gif`
+    - Tamaño máximo: **1.5 MB**
+  - Fechas:
+    - Requiere ingreso y vencimiento
+    - Deben ser posteriores al primer día del mes actual
 
+- Paginación dinámica con AJAX
+- Ordenamiento haciendo clic en “Fecha Ingreso”
+- Visualización de miniaturas de las imágenes
+
+---
+
+## 🐳 Notas Docker
+
+- El contenedor `app` instala automáticamente `pdo_mysql` y levanta el servidor de desarrollo
+- Puedes conectarte a la base de datos usando:
+  - **Host**: `localhost`
+  - **Puerto**: `3306`
+  - **Usuario**: `laravel`
+  - **Contraseña**: `secret`
 

@@ -20,7 +20,6 @@ public function list(Request $request)
 
     $productos = Product::orderBy($sort, $order)->paginate(5);
 
-    // Formatear fechas antes de retornar
     $productos->getCollection()->transform(function ($producto) {
         $producto->fecha_ingreso = Carbon::parse($producto->fecha_ingreso)->format('d/m/Y');
         $producto->fecha_vencimiento = Carbon::parse($producto->fecha_vencimiento)->format('d/m/Y');

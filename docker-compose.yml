@@ -11,7 +11,7 @@ services:
       - 8000:8000
     depends_on:
       - db
-    command: bash -c "docker-php-ext-install pdo pdo_mysql && php artisan serve --host=0.0.0.0 --port=8000"
+    command: bash -c "docker-php-ext-install pdo pdo_mysql && php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
 
   db:
     image: mariadb:10.6
